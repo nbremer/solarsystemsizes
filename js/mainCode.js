@@ -70,15 +70,16 @@ d3.csv(fileName, function(error, data) {
 
 	//Create dataset for planets
 	nodes = d3.range(data.length).map(function(d,i) {
+		console.log(data[i].meanRadiusEarth);
 	  return {
 		radius: data[i].meanRadiusEarth,
 		body: data[i].body,
 		type: data[i].type,
-		imgsrc: data[i].imgsrc
+		imgsrc: data[i].imgsrc		
 	  };
 	});
 	
-	console.log(nodes);
+	console.log(data);
 
 	force = d3.layout.force()
 		.nodes(nodes)
