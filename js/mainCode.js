@@ -42,11 +42,21 @@ var m = 3, //Number of types of objects
 	circle,
 	maxSize,
 	labels,
+	fileName = "Solar planets object sizes.csv",
 	color = d3.scale.ordinal() //Needed for IE
-		.domain(["Star","Gas Giant","Terrestrial planet"])
-		.range(["#FEB914","#EFD7AB","#01009C"]);
-			
-d3.csv("Solar planets object sizes.csv", function(error, data) {
+		.domain(["Star","Gas Giant","Terrestrial planet", "Terrestrial planet"])
+		.range(["#FEB914","#7FB2FA","#934725"]);
+
+if (IE == true) {				
+	var IEerror = svg.append("text")
+					.attr("transform", "translate(" + (width/2) + ",15)")
+					.style("text-anchor","middle")
+					.text("Sorry, the pretty SVG images of the planets and Sun are unable to work in Internet Explorer");
+	
+	fileName = "Solar planets object sizes IE.csv";
+}//if
+		
+d3.csv(fileName, function(error, data) {
 
 	//Convert to numeric values
 	//Note that the value for the radius of Saturn should be 9.14
