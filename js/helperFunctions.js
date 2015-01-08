@@ -46,8 +46,7 @@ function rescale() {
 		d3.selectAll(".solarObject")
 			.transition()
 			.attr("r", function(d) { return radiusScale*d.radius; })
-			.attr("width", function(d) {return 2*radiusScale*d.radius;})
-			.attr("height", function(d) {return 2*radiusScale*d.radius;});
+			;
 	force.start();
 }//rescale
 
