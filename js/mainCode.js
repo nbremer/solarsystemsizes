@@ -1,5 +1,5 @@
 //Check for IE
-var IE = msieversion();
+var IE = detectIE();
 
 //Width and Height of the SVG
 var wind = window,
@@ -101,7 +101,7 @@ d3.csv("Solar planets object sizes.csv", function(error, data) {
         .attr("cx",0)
         .attr("cy",0)
 		.style("fill", function(d){
-			if (IE > 0) {
+			if (IE == true) {
 				return color(d.type);
 			} else {
 				return "url(#planet-" + d.body + ")";

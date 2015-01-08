@@ -6,13 +6,21 @@ window.onerror = function() {
 }
 
 //Check for IE
-function msieversion() {
+function detectIE() {
 
         var ua = window.navigator.userAgent;
         var msie = ua.indexOf("MSIE ");
+		var trident = ua.indexOf('Trident/');
 		
 		console.log(msie);
-}
+		console.log(trident);
+		
+		if (msie > 0 | trident > 0) { 
+			return true;
+		} else {
+			return false;
+		}//else
+}//detectIE
      	   
 function tick(e) {
   circle
