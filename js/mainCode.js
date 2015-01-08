@@ -83,6 +83,7 @@ d3.csv("Solar planets object sizes.csv", function(error, data) {
 		   .append("image")
 			.attr('class', "patternImage")
 			.attr("xlink:href", function(d){return d.imgsrc;})
+			.attr("href", function(d){return d.imgsrc;})
 			.attr('width', 1)
 			.attr('height', 1);
    
