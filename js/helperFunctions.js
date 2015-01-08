@@ -12,10 +12,7 @@ function detectIE() {
         var msie = ua.indexOf("MSIE ");
 		var trident = ua.indexOf('Trident/');
 		
-		console.log(msie);
-		console.log(trident);
-		
-		if (msie > 0 | trident > 0) { 
+		if (msie > 0 || trident > 0) { 
 			return true;
 		} else {
 			return false;
