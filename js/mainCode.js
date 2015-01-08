@@ -58,6 +58,8 @@ if (IE == true) {
 		
 d3.csv(fileName, function(error, data) {
 
+	console.log(data);
+	
 	//Convert to numeric values
 	//Note that the value for the radius of Saturn should be 9.14
 	//The value of 21.56 is the value needed to include the rings without clipping
@@ -70,7 +72,6 @@ d3.csv(fileName, function(error, data) {
 
 	//Create dataset for planets
 	nodes = d3.range(data.length).map(function(d,i) {
-		console.log(data[i].meanRadiusEarth);
 	  return {
 		radius: data[i].meanRadiusEarth,
 		body: data[i].body,
@@ -78,8 +79,6 @@ d3.csv(fileName, function(error, data) {
 		imgsrc: data[i].imgsrc		
 	  };
 	});
-	
-	console.log(data);
 
 	force = d3.layout.force()
 		.nodes(nodes)
