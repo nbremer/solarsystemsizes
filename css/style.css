@@ -1,0 +1,89 @@
+body {
+	font-size: 14px;
+	font-weight: 400;
+	font-family: 'Raleway', sans-serif;
+	text-align: center;
+	vertical-align: middle;
+	background: url(http://33.media.tumblr.com/tumblr_me8fukLt0z1rdwlp0o1_500.jpg);
+	cursor: default;
+	color: white;
+	fill: white;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+}
+
+#slider {
+	position: relative;
+	width: 300px;
+}
+
+#title {
+	font-family: 'Raleway', sans-serif;
+	color: white;
+	font-weight: 300;
+	font-size: 28px;
+	text-transform: uppercase;
+	margin-top: 25px;
+	margin-bottom: 30px;
+	z-index: 1000;
+}
+
+#chart {
+	z-index: 0;
+}
+
+#sliderText {
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	font-size: 12px;
+	text-transform: lowercase;
+	z-index: 1000;
+}
+
+#expl {
+	font-size: 10px;
+	font-family: 'Open Sans', sans-serif;	
+}
+
+/*Making changes to the default UI slider*/
+.ui-widget-content {
+	background: #ffffff;
+	height: 3px;
+}
+
+.ui-widget {
+	font-size: 1.1em;
+}
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: 0px;
+	background: #e6e6e6;
+	border-radius: 10px;
+	outline:0;
+}
+
+.ui-slider-horizontal .ui-slider-handle {
+	top: -.5em;
+	margin-left: -.6em;
+}
+
+.ui-slider .ui-slider-handle {
+	position: absolute;
+	z-index: 2;
+	width: 20px;
+	height: 20px;
+	cursor: pointer;
+	outline:0;
+}
+
+.ui-slider {
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	margin-top: 10px;
+	margin-bottom: 15px;
+}
