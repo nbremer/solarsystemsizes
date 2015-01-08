@@ -63,9 +63,9 @@ d3.csv(fileName, function(error, data) {
 	//Convert to numeric values
 	//Note that the value for the radius of Saturn should be 9.14
 	//The value of 21.56 is the value needed to include the rings without clipping
-	data.forEach(function(d) {
-		d.meanRadiusEarth = +d.meanRadiusEarth;
-	});
+	//data.forEach(function(d) {
+	//	d.meanRadiusEarth = +d.meanRadiusEarth;
+	//});
 	
 	//Save the size of the sun
 	maxSize = d3.max(data, function(d) {return d.meanRadiusEarth;})
