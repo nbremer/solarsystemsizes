@@ -4,6 +4,15 @@
 window.onerror = function() {
     location.reload();
 }
+
+//Check for IE
+function msieversion() {
+
+        var ua = window.navigator.userAgent;
+        var msie = ua.indexOf("MSIE ");
+		
+		console.log(msie);
+}
      	   
 function tick(e) {
   circle

@@ -1,3 +1,6 @@
+//Check for IE
+var IE = msieversion();
+
 //Width and Height of the SVG
 var wind = window,
 	d = document,
@@ -38,7 +41,10 @@ var m = 3, //Number of types of objects
 	nodes,
 	circle,
 	maxSize,
-	labels;
+	labels,
+	color = d3.scale.ordinal() //Needed for IE
+		.domain(["Star","Gas Giant","Terrestrial planet"])
+		.range(["#FEB914","#EFD7AB","#01009C"]);
 			
 d3.csv("Solar planets object sizes.csv", function(error, data) {
 
@@ -83,7 +89,6 @@ d3.csv("Solar planets object sizes.csv", function(error, data) {
 		   .append("image")
 			.attr('class', "patternImage")
 			.attr("xlink:href", function(d){return d.imgsrc;})
-			.attr("href", function(d){return d.imgsrc;})
 			.attr('width', 1)
 			.attr('height', 1);
    
@@ -95,7 +100,13 @@ d3.csv("Solar planets object sizes.csv", function(error, data) {
 		.attr("r", function(d) { return radiusScale*d.radius; })
         .attr("cx",0)
         .attr("cy",0)
-		.style("fill", function(d){return "url(#planet-" + d.body + ")";})
+		.style("fill", function(d){
+			if (IE > 0) {
+				return color(d.type);
+			} else {
+				return "url(#planet-" + d.body + ")";
+			}//else
+		})
 		.on("mouseover", function() { tooltip.style("display", null); })
 		.on("mouseout", function() { tooltip.style("display", "none"); })
 		.on("mousemove", showName)
