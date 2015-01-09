@@ -1,6 +1,5 @@
-//Check for IE
-//var IE = detectIE();
-var IE = false;
+//Use the pretty SVG images initially
+var lowPerf = false;
 
 //Width and Height of the SVG
 var wind = window,
@@ -34,7 +33,10 @@ var planetContainer = svg.append("g").attr("class","planetContainer");
 var tooltip = svg.append("g")
 				.attr("class", "tooltip")
 				.style("display", "none");
-	  
+
+//Change between fast and pretty mode				
+d3.select("#faster").on("click", noSVGmode);
+				
 var m = 3, //Number of types of objects
 	padding = 5,
 	radiusScale = 1,
@@ -43,44 +45,39 @@ var m = 3, //Number of types of objects
 	circle,
 	maxSize,
 	labels,
-	fileName = "Solar planets object sizes.csv",
+	dataSet,
 	color = d3.scale.ordinal() //Needed for IE
 		.domain(["Star","Gas Giant","Terrestrial planet", "Terrestrial planet"])
 		.range(["#FEB914","#7FB2FA","#934725"]);
-
-if (IE == true) {				
-	//var IEerror = svg.append("text")
-	//				.attr("transform", "translate(" + (width/2) + ",15)")
-	//				.style("text-anchor","middle")
-	//				.text("Sorry, the pretty SVG images of the planets and Sun are unable to work in Internet Explorer");
 	
-	fileName = "Solar planets object sizes IE.csv";
-}//if
-		
-d3.csv(fileName, function(error, data) {
-
-	console.log(data);
 	
+d3.csv("Solar planets object sizes.csv", function(error, data) {
+
 	//Convert to numeric values
 	//Note that the value for the radius of Saturn should be 9.14
 	//The value of 21.56 is the value needed to include the rings without clipping
 	data.forEach(function(d) {
 		d.meanRadiusEarth = +d.meanRadiusEarth;
+		d.meanRadiusEarthLP = +d.meanRadiusEarthLP;
 	});
+	
+	//Save for use outside function
+	dataSet = data;
 	
 	//Save the size of the sun
 	maxSize = d3.max(data, function(d) {return d.meanRadiusEarth;})
 
-	//Create dataset for planets
-	nodes = d3.range(data.length).map(function(d,i) {
+	//Create dataset for actual use
+	nodes = d3.range(dataSet.length).map(function(d,i) {	
 	  return {
-		radius: data[i].meanRadiusEarth,
-		body: data[i].body,
-		type: data[i].type,
-		imgsrc: data[i].imgsrc		
+		radius: dataSet[i].meanRadiusEarth,
+		body: dataSet[i].body,
+		type: dataSet[i].type,
+		imgsrc: dataSet[i].imgsrc		
 	  };
 	});
 
+	//Initiate force
 	force = d3.layout.force()
 		.nodes(nodes)
 		.size([width, height])
@@ -114,7 +111,7 @@ d3.csv(fileName, function(error, data) {
         .attr("cx",0)
         .attr("cy",0)
 		.style("fill", function(d){
-			if (IE == true) {
+			if (lowPerf == true) {
 				return color(d.type);
 			} else {
 				return "url(#planet-" + d.body + ")";

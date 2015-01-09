@@ -2,7 +2,7 @@
 /////////////// Helper Functions /////////////////////
 //////////////////////////////////////////////////////
 window.onerror = function() {
-    location.reload();
+//    location.reload();
 }
 
 //Check for IE
@@ -49,6 +49,30 @@ function rescale() {
 			;
 	force.start();
 }//rescale
+
+//Change between fast and pretty mode
+function noSVGmode() {
+	//Set lowPerf to other state
+	lowPerf = (lowPerf == false) ? true : false;
+	
+	//Because Saturns size changes when no more SVG images are used (because of the rings)
+	//the radius needs to be updated
+	nodes.forEach(function(d, i) {
+		if (lowPerf == false) {d.radius = dataSet[i].meanRadiusEarth;}
+		else {d.radius = dataSet[i].meanRadiusEarthLP;}//else
+	});
+	
+	//Update color (and size for Saturn)
+	d3.selectAll(".solarObject")
+		.attr("r", function(d) { return radiusScale*d.radius; })
+		.style("fill", function(d){
+			if (lowPerf == true) {
+				return color(d.type);
+			} else {
+				return "url(#planet-" + d.body + ")";
+			}//else
+		});
+}// noSVGmode
 
 //Set up the slider
 $(function() {

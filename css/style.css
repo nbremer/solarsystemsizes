@@ -49,6 +49,10 @@ a {
 	font-family: 'Open Sans', sans-serif;	
 }
 
+#faster {
+	cursor: pointer;
+}
+
 /*Making changes to the default UI slider*/
 .ui-widget-content {
 	background: #ffffff;
