@@ -2,7 +2,7 @@
 /////////////// Helper Functions /////////////////////
 //////////////////////////////////////////////////////
 window.onerror = function() {
-//    location.reload();
+    location.reload();
 }
 
 //Check for IE
@@ -45,8 +45,7 @@ function rescale() {
 	force.stop();
 		d3.selectAll(".solarObject")
 			.transition()
-			.attr("r", function(d) { return radiusScale*d.radius; })
-			;
+			.attr("r", function(d) { return radiusScale*d.radius; });
 	force.start();
 }//rescale
 
@@ -54,6 +53,12 @@ function rescale() {
 function noSVGmode() {
 	//Set lowPerf to other state
 	lowPerf = (lowPerf == false) ? true : false;
+	
+	if (lowPerf == true) {
+		d3.select("#faster").html("high performance mode");
+	} else {
+		d3.select("#faster").html("low performance mode");
+	}//else
 	
 	//Because Saturns size changes when no more SVG images are used (because of the rings)
 	//the radius needs to be updated
