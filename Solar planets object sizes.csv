@@ -1,10 +1,10 @@
-﻿body,meanRadiusKM,meanRadiusEarth,meanRadiusEarthLP,type,imgsrc
-Sun,696342±65,109.3,109.3,Star,img/space_sun.svg
-Jupiter,69911±6,10.97,10.97,Gas Giant,img/planet_jupiter_circle.svg
-Saturn,58232±6,21.56,9.14,Gas Giant,img/planet_saturn_incl_rings.svg
-Uranus,25362±7,3.98,3.98,Gas Giant,img/planet_uranus_circle.svg
-Neptune,24622±19,3.86,3.86,Gas Giant,img/planet_neptune_circle.svg
-Earth,6371.0,1,1,Terrestrial planet,img/planet_earth_circle.svg
-Venus,6051.8±1.0,0.950,0.950,Terrestrial planet,img/planet_venus_circle.svg
-Mars,3389.5±0.2,0.532,0.532,Terrestrial planet,img/planet_mars_circle.svg
-Mercury,2439.7±1.0,0.383,0.383,Terrestrial planet,img/planet_mercury_circle.svg
+﻿body,meanRadiusKM,meanRadiusEarth,meanRadiusEarthLP,type,imgsrc,color
+Sun,696342±65,109.3,109.3,Star,img/space_sun.svg,#FEB914
+Jupiter,69911±6,10.97,10.97,Gas Giant,img/planet_jupiter_circle.svg,#A7602F
+Saturn,58232±6,21.56,9.14,Gas Giant,img/planet_saturn_incl_rings.svg,#C6B48F
+Uranus,25362±7,3.98,3.98,Gas Giant,img/planet_uranus_circle.svg,#7FB2FA
+Neptune,24622±19,3.86,3.86,Gas Giant,img/planet_neptune_circle.svg,#00C1FF
+Earth,6371.0,1,1,Terrestrial planet,img/planet_earth_circle.svg,#0077BE
+Venus,6051.8±1.0,0.950,0.950,Terrestrial planet,img/planet_venus_circle.svg,#CB963F
+Mars,3389.5±0.2,0.532,0.532,Terrestrial planet,img/planet_mars_circle.svg,#601309
+Mercury,2439.7±1.0,0.383,0.383,Terrestrial planet,img/planet_mercury_circle.svg,#934725

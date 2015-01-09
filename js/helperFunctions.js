@@ -72,7 +72,7 @@ function noSVGmode() {
 		.attr("r", function(d) { return radiusScale*d.radius; })
 		.style("fill", function(d){
 			if (lowPerf == true) {
-				return color(d.type);
+				return d.color;
 			} else {
 				return "url(#planet-" + d.body + ")";
 			}//else
@@ -84,7 +84,7 @@ $(function() {
 $("#slider").slider({
   orientation: "horizontal",
   min: 1,
-  max: 4,
+  max: 3,
   value: 1,
   step: 0.25,
   slide: rescale,

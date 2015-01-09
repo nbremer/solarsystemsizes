@@ -45,11 +45,7 @@ var m = 3, //Number of types of objects
 	circle,
 	maxSize,
 	labels,
-	dataSet,
-	color = d3.scale.ordinal() //Needed for IE
-		.domain(["Star","Gas Giant","Terrestrial planet", "Terrestrial planet"])
-		.range(["#FEB914","#7FB2FA","#934725"]);
-	
+	dataSet;	
 	
 d3.csv("Solar planets object sizes.csv", function(error, data) {
 
@@ -73,7 +69,8 @@ d3.csv("Solar planets object sizes.csv", function(error, data) {
 		radius: dataSet[i].meanRadiusEarth,
 		body: dataSet[i].body,
 		type: dataSet[i].type,
-		imgsrc: dataSet[i].imgsrc		
+		imgsrc: dataSet[i].imgsrc,
+		color: dataSet[i].color
 	  };
 	});
 
@@ -110,13 +107,7 @@ d3.csv("Solar planets object sizes.csv", function(error, data) {
 		.attr("r", function(d) { return radiusScale*d.radius; })
         .attr("cx",0)
         .attr("cy",0)
-		.style("fill", function(d){
-			if (lowPerf == true) {
-				return color(d.type);
-			} else {
-				return "url(#planet-" + d.body + ")";
-			}//else
-		})
+		.style("fill", function(d){return "url(#planet-" + d.body + ")";})
 		.on("mouseover", function() { tooltip.style("display", null); })
 		.on("mouseout", function() { tooltip.style("display", "none"); })
 		.on("mousemove", showName)
